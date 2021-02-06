@@ -45,7 +45,7 @@ jobs:
 
   - script: |
       sudo apt-get update
-      conda install -c conda-forge jags
+      conda install -c conda-forge jags -y
       python -m pip install --upgrade pip
       python -m pip install wheel
 
