@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InferenceData &#8212; ArviZ dev documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="arviz.InferenceData" href="generated/arviz.InferenceData.html" />
+    <link rel="prev" title="arviz.load_arviz_data" href="generated/arviz.load_arviz_data.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/logo.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../examples/index.html">Example Gallery</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">API Reference</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../usage.html">Usage</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../contributing/index.html">Contributing</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../about.html">About</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/arviz-devs/arviz" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/arviz_devs" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+  
+    
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="">
+                    <a href="plots.html">Plots</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="stats.html">Stats</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="diagnostics.html">Diagnostics</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="stats_utils.html">Stats utils</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="data.html">Data</a>
+                </li>
+            
+          
+            
+                <li class="active">
+                    <a href="">InferenceData</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="utils.html">Utils</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="rcparams.html">rcParams</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="wrappers.html">Wrappers</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="stats_refitting.html">Stats (requiring refitting)</a>
+                </li>
+            
+          
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+  
+
+
+          
+  
+    
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#constructor" class="nav-link">Constructor</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#attributes" class="nav-link">Attributes</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#io-conversion" class="nav-link">IO / Conversion</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#dictionary-interface" class="nav-link">Dictionary interface</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#inferencedata-contents" class="nav-link">InferenceData contents</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#indexing" class="nav-link">Indexing</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#computation" class="nav-link">Computation</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#reshaping-and-reorganizing" class="nav-link">Reshaping and reorganizing</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+  
+
+
+          
+  
+    
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="inferencedata">
+<span id="idata-api"></span><h1>InferenceData<a class="headerlink" href="#inferencedata" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="constructor">
+<h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.html#arviz.InferenceData" title="arviz.InferenceData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData</span></code></a>(**kwargs, …)</p></td>
+<td><p>Container for inference data storage using xarray.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">InferenceData</span></code> objects store <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v0.16.3.dev0)"><code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a> as attributes.
+The <a class="reference internal" href="../schema/schema.html#schema"><span class="std std-ref">InferenceData schema specification</span></a> contains the guidance related to these attributes.</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.get_index.html#arviz.InferenceData.get_index" title="arviz.InferenceData.get_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.get_index</span></code></a>(key)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="io-conversion">
+<h2>IO / Conversion<a class="headerlink" href="#io-conversion" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.to_dataframe.html#arviz.InferenceData.to_dataframe" title="arviz.InferenceData.to_dataframe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.to_dataframe</span></code></a>([groups, …])</p></td>
+<td><p>Convert InferenceData to a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> following xarray naming conventions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.InferenceData.to_json.html#arviz.InferenceData.to_json" title="arviz.InferenceData.to_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.to_json</span></code></a>(filename[, groups, …])</p></td>
+<td><p>Write InferenceData to a json file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.from_netcdf.html#arviz.InferenceData.from_netcdf" title="arviz.InferenceData.from_netcdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.from_netcdf</span></code></a>(filename)</p></td>
+<td><p>Initialize object from a netcdf file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.InferenceData.to_netcdf.html#arviz.InferenceData.to_netcdf" title="arviz.InferenceData.to_netcdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.to_netcdf</span></code></a>(filename[, …])</p></td>
+<td><p>Write InferenceData to file using netcdf4.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.from_zarr.html#arviz.InferenceData.from_zarr" title="arviz.InferenceData.from_zarr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.from_zarr</span></code></a>(store)</p></td>
+<td><p>Initialize object from a zarr store or path.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.InferenceData.to_zarr.html#arviz.InferenceData.to_zarr" title="arviz.InferenceData.to_zarr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.to_zarr</span></code></a>([store])</p></td>
+<td><p>Convert InferenceData to a <a class="reference external" href="https://zarr.readthedocs.io/en/stable/api/hierarchy.html#zarr.hierarchy.Group" title="(in zarr v2.6.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">zarr.hierarchy.Group</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.chunk.html#arviz.InferenceData.chunk" title="arviz.InferenceData.chunk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.chunk</span></code></a>([chunks, name_prefix, …])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.InferenceData.compute.html#arviz.InferenceData.compute" title="arviz.InferenceData.compute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.compute</span></code></a>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.load.html#arviz.InferenceData.load" title="arviz.InferenceData.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.load</span></code></a>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.InferenceData.persist.html#arviz.InferenceData.persist" title="arviz.InferenceData.persist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.persist</span></code></a>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.unify_chunks.html#arviz.InferenceData.unify_chunks" title="arviz.InferenceData.unify_chunks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.unify_chunks</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dictionary-interface">
+<h2>Dictionary interface<a class="headerlink" href="#dictionary-interface" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.groups.html#arviz.InferenceData.groups" title="arviz.InferenceData.groups"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.groups</span></code></a>()</p></td>
+<td><p>Return all groups present in InferenceData object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.InferenceData.items.html#arviz.InferenceData.items" title="arviz.InferenceData.items"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.items</span></code></a>()</p></td>
+<td><p>Return a view over the groups and datasets present in the InferenceData object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.values.html#arviz.InferenceData.values" title="arviz.InferenceData.values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.values</span></code></a>()</p></td>
+<td><p>Return a view over the Xarray Datasets present in the InferenceData object.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="inferencedata-contents">
+<h2>InferenceData contents<a class="headerlink" href="#inferencedata-contents" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.add_groups.html#arviz.InferenceData.add_groups" title="arviz.InferenceData.add_groups"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.add_groups</span></code></a>([group_dict, …])</p></td>
+<td><p>Add new groups to InferenceData object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.InferenceData.extend.html#arviz.InferenceData.extend" title="arviz.InferenceData.extend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.extend</span></code></a>(other[, join])</p></td>
+<td><p>Extend InferenceData with groups from another InferenceData.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.assign.html#arviz.InferenceData.assign" title="arviz.InferenceData.assign"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.assign</span></code></a>([variables])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.InferenceData.assign_coords.html#arviz.InferenceData.assign_coords" title="arviz.InferenceData.assign_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.assign_coords</span></code></a>([coords])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.rename.html#arviz.InferenceData.rename" title="arviz.InferenceData.rename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.rename</span></code></a>([name_dict, groups, …])</p></td>
+<td><p>Perform xarray renaming of variable and dimensions on all groups.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.InferenceData.rename_dims.html#arviz.InferenceData.rename_dims" title="arviz.InferenceData.rename_dims"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.rename_dims</span></code></a>([name_dict, …])</p></td>
+<td><p>Perform xarray renaming of dimensions on all groups.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.set_coords.html#arviz.InferenceData.set_coords" title="arviz.InferenceData.set_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.set_coords</span></code></a>(names[, inplace])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.InferenceData.set_index.html#arviz.InferenceData.set_index" title="arviz.InferenceData.set_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.set_index</span></code></a>([indexes, append, …])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="indexing">
+<h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.isel.html#arviz.InferenceData.isel" title="arviz.InferenceData.isel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.isel</span></code></a>([groups, filter_groups, …])</p></td>
+<td><p>Perform an xarray selection on all groups.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.InferenceData.sel.html#arviz.InferenceData.sel" title="arviz.InferenceData.sel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.sel</span></code></a>([groups, filter_groups, …])</p></td>
+<td><p>Perform an xarray selection on all groups.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.reset_index.html#arviz.InferenceData.reset_index" title="arviz.InferenceData.reset_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.reset_index</span></code></a>(dims_or_levels[, …])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="computation">
+<h2>Computation<a class="headerlink" href="#computation" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.map.html#arviz.InferenceData.map" title="arviz.InferenceData.map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.map</span></code></a>(fun[, groups, …])</p></td>
+<td><p>Apply a function to multiple groups.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.InferenceData.cumsum.html#arviz.InferenceData.cumsum" title="arviz.InferenceData.cumsum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.cumsum</span></code></a>([dim, skipna])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.max.html#arviz.InferenceData.max" title="arviz.InferenceData.max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.max</span></code></a>([dim, skipna])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.InferenceData.mean.html#arviz.InferenceData.mean" title="arviz.InferenceData.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.mean</span></code></a>([dim, skipna])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.median.html#arviz.InferenceData.median" title="arviz.InferenceData.median"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.median</span></code></a>([dim, skipna])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.InferenceData.min.html#arviz.InferenceData.min" title="arviz.InferenceData.min"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.min</span></code></a>([dim, skipna])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.quantile.html#arviz.InferenceData.quantile" title="arviz.InferenceData.quantile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.quantile</span></code></a>(q[, dim, …])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.InferenceData.sum.html#arviz.InferenceData.sum" title="arviz.InferenceData.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.sum</span></code></a>([dim, skipna])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="reshaping-and-reorganizing">
+<h2>Reshaping and reorganizing<a class="headerlink" href="#reshaping-and-reorganizing" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.InferenceData.stack.html#arviz.InferenceData.stack" title="arviz.InferenceData.stack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.stack</span></code></a>([dimensions, groups, …])</p></td>
+<td><p>Perform an xarray stacking on all groups.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.InferenceData.unstack.html#arviz.InferenceData.unstack" title="arviz.InferenceData.unstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InferenceData.unstack</span></code></a>([dim, groups, …])</p></td>
+<td><p>Perform an xarray unstacking on all groups.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="generated/arviz.load_arviz_data.html" title="previous page">arviz.load_arviz_data</a>
+    <a class='right-next' id="next-link" href="generated/arviz.InferenceData.html" title="next page">arviz.InferenceData</a>
+
+              </div>
+              
+          </main>
+          
+  
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, ArviZ devs.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

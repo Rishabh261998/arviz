@@ -1,0 +1,447 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>arviz.compare &#8212; ArviZ dev documentation</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="arviz.hdi" href="arviz.hdi.html" />
+    <link rel="prev" title="arviz.apply_test_function" href="arviz.apply_test_function.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../../index.html">
+    
+      <img src="../../_static/logo.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../examples/index.html">Example Gallery</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../user_guide/index.html">User Guide</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">API Reference</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../usage.html">Usage</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../contributing/index.html">Contributing</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../about.html">About</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/arviz-devs/arviz" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/arviz_devs" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+  
+    
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="">
+                    <a href="../plots.html">Plots</a>
+                </li>
+            
+          
+            
+  
+                <li class="active">
+                    <a href="../stats.html">Stats</a>
+                    <ul>
+                    
+                        <li class="">
+                            <a href="arviz.apply_test_function.html">arviz.apply_test_function</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="">arviz.compare</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.hdi.html">arviz.hdi</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.hpd.html">arviz.hpd</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.loo.html">arviz.loo</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.loo_pit.html">arviz.loo_pit</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.psislw.html">arviz.psislw</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.r2_score.html">arviz.r2_score</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.summary.html">arviz.summary</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.waic.html">arviz.waic</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../diagnostics.html">Diagnostics</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../stats_utils.html">Stats utils</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../data.html">Data</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../inference_data.html">InferenceData</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../utils.html">Utils</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../rcparams.html">rcParams</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../wrappers.html">Wrappers</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../stats_refitting.html">Stats (requiring refitting)</a>
+                </li>
+            
+          
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+  
+
+
+          
+  
+    
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+  
+
+
+          
+  
+    
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="arviz-compare">
+<h1>arviz.compare<a class="headerlink" href="#arviz-compare" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="arviz.compare">
+<code class="sig-prename descclassname">arviz.</code><code class="sig-name descname">compare</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataset_dict</span></em>, <em class="sig-param"><span class="n">ic</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'stacking'</span></em>, <em class="sig-param"><span class="n">b_samples</span><span class="o">=</span><span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">scale</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/arviz/stats/stats.html#compare"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arviz.compare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare models based on PSIS-LOO <cite>loo</cite> or WAIC <cite>waic</cite> cross-validation.</p>
+<p>LOO is leave-one-out (PSIS-LOO <cite>loo</cite>) cross-validation and
+WAIC is the widely applicable information criterion.
+Read more theory here - in a paper by some of the leading authorities
+on model selection dx.doi.org/10.1111/1467-9868.00353</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>dataset_dict: dict[str] -&gt; InferenceData</strong></dt><dd><p>A dictionary of model names and InferenceData objects</p>
+</dd>
+<dt><strong>ic: str</strong></dt><dd><p>Information Criterion (PSIS-LOO <cite>loo</cite> or WAIC <cite>waic</cite>) used to compare models. Defaults to
+<code class="docutils literal notranslate"><span class="pre">rcParams[&quot;stats.information_criterion&quot;]</span></code>.</p>
+</dd>
+<dt><strong>method: str</strong></dt><dd><p>Method used to estimate the weights for each model. Available options are:</p>
+<ul class="simple">
+<li><p>‘stacking’ : (default) stacking of predictive distributions.</p></li>
+<li><p>‘BB-pseudo-BMA’ : pseudo-Bayesian Model averaging using Akaike-type
+weighting. The weights are stabilized using the Bayesian bootstrap.</p></li>
+<li><p>‘pseudo-BMA’: pseudo-Bayesian Model averaging using Akaike-type
+weighting, without Bootstrap stabilization (not recommended).</p></li>
+</ul>
+<p>For more information read <a class="reference external" href="https://arxiv.org/abs/1704.02030">https://arxiv.org/abs/1704.02030</a></p>
+</dd>
+<dt><strong>b_samples: int</strong></dt><dd><p>Number of samples taken by the Bayesian bootstrap estimation.
+Only useful when method = ‘BB-pseudo-BMA’.</p>
+</dd>
+<dt><strong>alpha: float</strong></dt><dd><p>The shape parameter in the Dirichlet distribution used for the Bayesian bootstrap. Only
+useful when method = ‘BB-pseudo-BMA’. When alpha=1 (default), the distribution is uniform
+on the simplex. A smaller alpha will keeps the final weights more away from 0 and 1.</p>
+</dd>
+<dt><strong>seed: int or np.random.RandomState instance</strong></dt><dd><p>If int or RandomState, use it for seeding Bayesian bootstrap. Only
+useful when method = ‘BB-pseudo-BMA’. Default None the global
+np.random state is used.</p>
+</dd>
+<dt><strong>scale: str</strong></dt><dd><p>Output scale for IC. Available options are:</p>
+<ul class="simple">
+<li><p><cite>log</cite> : (default) log-score (after Vehtari et al. (2017))</p></li>
+<li><p><cite>negative_log</cite> : -1 * (log-score)</p></li>
+<li><p><cite>deviance</cite> : -2 * (log-score)</p></li>
+</ul>
+<p>A higher log-score (or a lower deviance) indicates a model with better predictive
+accuracy.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>A DataFrame, ordered from best to worst model (measured by information criteria).</dt><dd></dd>
+<dt>The index reflects the key with which the models are passed to this function. The columns are:</dt><dd></dd>
+<dt>rank: The rank-order of the models. 0 is the best.</dt><dd></dd>
+<dt>IC: Information Criteria (PSIS-LOO <cite>loo</cite> or WAIC <cite>waic</cite>).</dt><dd><p>Higher IC indicates higher out-of-sample predictive fit (“better” model). Default LOO.
+If <cite>scale</cite> is <cite>deviance</cite> or <cite>negative_log</cite> smaller IC indicates
+higher out-of-sample predictive fit (“better” model).</p>
+</dd>
+<dt>pIC: Estimated effective number of parameters.</dt><dd></dd>
+<dt>dIC: Relative difference between each IC (PSIS-LOO <cite>loo</cite> or WAIC <cite>waic</cite>)</dt><dd><p>and the lowest IC (PSIS-LOO <cite>loo</cite> or WAIC <cite>waic</cite>).
+The top-ranked model is always 0.</p>
+</dd>
+<dt>weight: Relative weight for each model.</dt><dd><p>This can be loosely interpreted as the probability of each model (among the compared model)
+given the data. By default the uncertainty in the weights estimation is considered using
+Bayesian bootstrap.</p>
+</dd>
+<dt>SE: Standard error of the IC estimate.</dt><dd><p>If method = BB-pseudo-BMA these values are estimated using Bayesian bootstrap.</p>
+</dd>
+<dt>dSE: Standard error of the difference in IC between each model and the top-ranked model.</dt><dd><p>It’s always 0 for the top-ranked model.</p>
+</dd>
+<dt>warning: A value of 1 indicates that the computation of the IC may not be reliable.</dt><dd><p>This could be indication of WAIC/LOO starting to fail see
+<a class="reference external" href="http://arxiv.org/abs/1507.04544">http://arxiv.org/abs/1507.04544</a> for details.</p>
+</dd>
+<dt>scale: Scale used for the IC.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="arviz.loo.html#arviz.loo" title="arviz.loo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loo</span></code></a></dt><dd><p>Compute the Pareto Smoothed importance sampling Leave One Out cross-validation.</p>
+</dd>
+<dt><a class="reference internal" href="arviz.waic.html#arviz.waic" title="arviz.waic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">waic</span></code></a></dt><dd><p>Compute the widely applicable information criterion.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>Compare the centered and non centered models of the eight school problem:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">arviz</span> <span class="k">as</span> <span class="nn">az</span>
+<span class="gp">   ...: </span><span class="n">data1</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">load_arviz_data</span><span class="p">(</span><span class="s2">&quot;non_centered_eight&quot;</span><span class="p">)</span>
+<span class="gp">   ...: </span><span class="n">data2</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">load_arviz_data</span><span class="p">(</span><span class="s2">&quot;centered_eight&quot;</span><span class="p">)</span>
+<span class="gp">   ...: </span><span class="n">compare_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;non centered&quot;</span><span class="p">:</span> <span class="n">data1</span><span class="p">,</span> <span class="s2">&quot;centered&quot;</span><span class="p">:</span> <span class="n">data2</span><span class="p">}</span>
+<span class="gp">   ...: </span><span class="n">az</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">compare_dict</span><span class="p">)</span>
+<span class="gp">   ...: </span>
+<span class="gh">Out[1]: </span><span class="go"></span>
+<span class="go">              rank        loo     p_loo  ...       dse  warning  loo_scale</span>
+<span class="go">non centered     0 -30.687290  0.841888  ...  0.000000    False        log</span>
+<span class="go">centered         1 -30.810374  0.954053  ...  0.086046    False        log</span>
+
+<span class="go">[2 rows x 9 columns]</span>
+</pre></div>
+</div>
+<p>Compare the models using LOO-CV, returning the IC in log scale and calculating the
+weights using the stacking method.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">az</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">compare_dict</span><span class="p">,</span> <span class="n">ic</span><span class="o">=</span><span class="s2">&quot;loo&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;stacking&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="gh">Out[2]: </span><span class="go"></span>
+<span class="go">              rank        loo     p_loo  ...       dse  warning  loo_scale</span>
+<span class="go">non centered     0 -30.687290  0.841888  ...  0.000000    False        log</span>
+<span class="go">centered         1 -30.810374  0.954053  ...  0.086046    False        log</span>
+
+<span class="go">[2 rows x 9 columns]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="arviz.apply_test_function.html" title="previous page">arviz.apply_test_function</a>
+    <a class='right-next' id="next-link" href="arviz.hdi.html" title="next page">arviz.hdi</a>
+
+              </div>
+              
+          </main>
+          
+  
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, ArviZ devs.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overview: module code &#8212; ArviZ dev documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/logo.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../examples/index.html">Example Gallery</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../api/index.html">API Reference</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../usage.html">Usage</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../contributing/index.html">Contributing</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../about.html">About</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/arviz-devs/arviz" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/arviz_devs" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+  
+    
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+  
+
+
+          
+  
+    
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+  
+
+
+          
+  
+    
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1>All modules for which code is available</h1>
+<ul><li><a href="arviz/data/base.html">arviz.data.base</a></li>
+<li><a href="arviz/data/converters.html">arviz.data.converters</a></li>
+<li><a href="arviz/data/datasets.html">arviz.data.datasets</a></li>
+<li><a href="arviz/data/inference_data.html">arviz.data.inference_data</a></li>
+<li><a href="arviz/data/io_cmdstan.html">arviz.data.io_cmdstan</a></li>
+<li><a href="arviz/data/io_cmdstanpy.html">arviz.data.io_cmdstanpy</a></li>
+<li><a href="arviz/data/io_dict.html">arviz.data.io_dict</a></li>
+<li><a href="arviz/data/io_emcee.html">arviz.data.io_emcee</a></li>
+<li><a href="arviz/data/io_json.html">arviz.data.io_json</a></li>
+<li><a href="arviz/data/io_netcdf.html">arviz.data.io_netcdf</a></li>
+<li><a href="arviz/data/io_numpyro.html">arviz.data.io_numpyro</a></li>
+<li><a href="arviz/data/io_pyjags.html">arviz.data.io_pyjags</a></li>
+<li><a href="arviz/data/io_pymc3.html">arviz.data.io_pymc3</a></li>
+<li><a href="arviz/data/io_pyro.html">arviz.data.io_pyro</a></li>
+<li><a href="arviz/data/io_pystan.html">arviz.data.io_pystan</a></li>
+<li><a href="arviz/data/io_tfp.html">arviz.data.io_tfp</a></li>
+<li><a href="arviz/plots/autocorrplot.html">arviz.plots.autocorrplot</a></li>
+<li><a href="arviz/plots/backends.html">arviz.plots.backends</a></li>
+<li><a href="arviz/plots/bpvplot.html">arviz.plots.bpvplot</a></li>
+<li><a href="arviz/plots/compareplot.html">arviz.plots.compareplot</a></li>
+<li><a href="arviz/plots/densityplot.html">arviz.plots.densityplot</a></li>
+<li><a href="arviz/plots/distcomparisonplot.html">arviz.plots.distcomparisonplot</a></li>
+<li><a href="arviz/plots/distplot.html">arviz.plots.distplot</a></li>
+<li><a href="arviz/plots/elpdplot.html">arviz.plots.elpdplot</a></li>
+<li><a href="arviz/plots/energyplot.html">arviz.plots.energyplot</a></li>
+<li><a href="arviz/plots/essplot.html">arviz.plots.essplot</a></li>
+<li><a href="arviz/plots/forestplot.html">arviz.plots.forestplot</a></li>
+<li><a href="arviz/plots/hdiplot.html">arviz.plots.hdiplot</a></li>
+<li><a href="arviz/plots/jointplot.html">arviz.plots.jointplot</a></li>
+<li><a href="arviz/plots/kdeplot.html">arviz.plots.kdeplot</a></li>
+<li><a href="arviz/plots/khatplot.html">arviz.plots.khatplot</a></li>
+<li><a href="arviz/plots/loopitplot.html">arviz.plots.loopitplot</a></li>
+<li><a href="arviz/plots/mcseplot.html">arviz.plots.mcseplot</a></li>
+<li><a href="arviz/plots/pairplot.html">arviz.plots.pairplot</a></li>
+<li><a href="arviz/plots/parallelplot.html">arviz.plots.parallelplot</a></li>
+<li><a href="arviz/plots/posteriorplot.html">arviz.plots.posteriorplot</a></li>
+<li><a href="arviz/plots/ppcplot.html">arviz.plots.ppcplot</a></li>
+<li><a href="arviz/plots/rankplot.html">arviz.plots.rankplot</a></li>
+<li><a href="arviz/plots/separationplot.html">arviz.plots.separationplot</a></li>
+<li><a href="arviz/plots/traceplot.html">arviz.plots.traceplot</a></li>
+<li><a href="arviz/plots/violinplot.html">arviz.plots.violinplot</a></li>
+<li><a href="arviz/rcparams.html">arviz.rcparams</a></li>
+<li><a href="arviz/stats/diagnostics.html">arviz.stats.diagnostics</a></li>
+<li><a href="arviz/stats/stats.html">arviz.stats.stats</a></li>
+<li><a href="arviz/stats/stats_refitting.html">arviz.stats.stats_refitting</a></li>
+<li><a href="arviz/stats/stats_utils.html">arviz.stats.stats_utils</a></li>
+<li><a href="arviz/utils.html">arviz.utils</a></li>
+<li><a href="arviz/wrappers/base.html">arviz.wrappers.base</a></li>
+<li><a href="arviz/wrappers/wrap_pystan.html">arviz.wrappers.wrap_pystan</a></li>
+<li><a href="collections/abc.html">collections.abc</a></li>
+<li><a href="xarray/core/common.html">xarray.core.common</a></li>
+<li><a href="xarray/core/dataset.html">xarray.core.dataset</a></li>
+</ul>
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+
+              </div>
+              
+          </main>
+          
+  
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, ArviZ devs.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

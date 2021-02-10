@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>arviz.ess &#8212; ArviZ dev documentation</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="arviz.rhat" href="arviz.rhat.html" />
+    <link rel="prev" title="arviz.bfmi" href="arviz.bfmi.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../../index.html">
+    
+      <img src="../../_static/logo.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../examples/index.html">Example Gallery</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../user_guide/index.html">User Guide</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">API Reference</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../usage.html">Usage</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../contributing/index.html">Contributing</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../about.html">About</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/arviz-devs/arviz" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/arviz_devs" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+  
+    
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="">
+                    <a href="../plots.html">Plots</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../stats.html">Stats</a>
+                </li>
+            
+          
+            
+  
+                <li class="active">
+                    <a href="../diagnostics.html">Diagnostics</a>
+                    <ul>
+                    
+                        <li class="">
+                            <a href="arviz.bfmi.html">arviz.bfmi</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="">arviz.ess</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.rhat.html">arviz.rhat</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.mcse.html">arviz.mcse</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../stats_utils.html">Stats utils</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../data.html">Data</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../inference_data.html">InferenceData</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../utils.html">Utils</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../rcparams.html">rcParams</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../wrappers.html">Wrappers</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../stats_refitting.html">Stats (requiring refitting)</a>
+                </li>
+            
+          
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+  
+
+
+          
+  
+    
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+  
+
+
+          
+  
+    
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="arviz-ess">
+<h1>arviz.ess<a class="headerlink" href="#arviz-ess" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="arviz.ess">
+<code class="sig-prename descclassname">arviz.</code><code class="sig-name descname">ess</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">var_names</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'bulk'</span></em>, <em class="sig-param"><span class="n">relative</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">prob</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dask_kwargs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/arviz/stats/diagnostics.html#ess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arviz.ess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate estimate of the effective sample size (ess).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">obj</span></dt><dd><p>Any object that can be converted to an <code class="docutils literal notranslate"><span class="pre">az.InferenceData</span></code> object.
+Refer to documentation of <code class="docutils literal notranslate"><span class="pre">az.convert_to_dataset</span></code> for details.
+For ndarray: shape = (chain, draw).
+For n-dimensional ndarray transform first to dataset with <code class="docutils literal notranslate"><span class="pre">az.convert_to_dataset</span></code>.</p>
+</dd>
+<dt><strong>var_names</strong><span class="classifier">str or list of str</span></dt><dd><p>Names of variables to include in the return value Dataset.</p>
+</dd>
+<dt><strong>method</strong><span class="classifier">str, optional, default “bulk”</span></dt><dd><p>Select ess method. Valid methods are:</p>
+<ul class="simple">
+<li><p>“bulk”</p></li>
+<li><p>“tail”     # prob, optional</p></li>
+<li><p>“quantile” # prob</p></li>
+<li><p>“mean” (old ess)</p></li>
+<li><p>“sd”</p></li>
+<li><p>“median”</p></li>
+<li><p>“mad” (mean absolute deviance)</p></li>
+<li><p>“z_scale”</p></li>
+<li><p>“folded”</p></li>
+<li><p>“identity”</p></li>
+<li><p>“local”</p></li>
+</ul>
+</dd>
+<dt><strong>relative</strong><span class="classifier">bool</span></dt><dd><p>Return relative ess
+<cite>ress = ess / n</cite></p>
+</dd>
+<dt><strong>prob</strong><span class="classifier">float, or tuple of two floats, optional</span></dt><dd><p>probability value for “tail”, “quantile” or “local” ess functions.</p>
+</dd>
+<dt><strong>dask_kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Dask related kwargs passed to <a class="reference internal" href="arviz.wrap_xarray_ufunc.html#arviz.wrap_xarray_ufunc" title="arviz.wrap_xarray_ufunc"><code class="xref py py-func docutils literal notranslate"><span class="pre">wrap_xarray_ufunc()</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>xarray.Dataset</dt><dd><p>Return the effective sample size, <span class="math notranslate nohighlight">\(\hat{N}_{eff}\)</span></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The basic ess (<span class="math notranslate nohighlight">\(N_{\mathit{eff}}\)</span>) diagnostic is computed by:</p>
+<div class="math notranslate nohighlight">
+\[\hat{N}_{\mathit{eff}} = \frac{MN}{\hat{\tau}}\]</div>
+<div class="math notranslate nohighlight">
+\[\hat{\tau} = -1 + 2 \sum_{t'=0}^K \hat{P}_{t'}\]</div>
+<p>where <span class="math notranslate nohighlight">\(M\)</span> is the number of chains, <span class="math notranslate nohighlight">\(N\)</span> the number of draws,
+<span class="math notranslate nohighlight">\(\hat{\rho}_t\)</span> is the estimated _autocorrelation at lag <span class="math notranslate nohighlight">\(t\)</span>, and
+<span class="math notranslate nohighlight">\(K\)</span> is the last integer for which <span class="math notranslate nohighlight">\(\hat{P}_{K} = \hat{\rho}_{2K} +
+\hat{\rho}_{2K+1}\)</span> is still positive.</p>
+<p>The current implementation is similar to Stan, which uses Geyer’s initial monotone sequence
+criterion (Geyer, 1992; Geyer, 2011).</p>
+<p class="rubric">References</p>
+<ul class="simple">
+<li><p>Vehtari et al. (2019) see <a class="reference external" href="https://arxiv.org/abs/1903.08008">https://arxiv.org/abs/1903.08008</a></p></li>
+<li><p><a class="reference external" href="https://mc-stan.org/docs/2_18/reference-manual/effective-sample-size-section.html">https://mc-stan.org/docs/2_18/reference-manual/effective-sample-size-section.html</a>
+Section 15.4.2</p></li>
+<li><p>Gelman et al. BDA (2014) Formula 11.8</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<p>Calculate the effective_sample_size using the default arguments:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">arviz</span> <span class="k">as</span> <span class="nn">az</span>
+<span class="gp">   ...: </span><span class="n">data</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">load_arviz_data</span><span class="p">(</span><span class="s1">&#39;non_centered_eight&#39;</span><span class="p">)</span>
+<span class="gp">   ...: </span><span class="n">az</span><span class="o">.</span><span class="n">ess</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">   ...: </span>
+<span class="gh">Out[1]: </span><span class="go"></span>
+<span class="go">&lt;xarray.Dataset&gt;</span>
+<span class="go">Dimensions:  (school: 8)</span>
+<span class="go">Coordinates:</span>
+<span class="go">  * school   (school) object &#39;Choate&#39; &#39;Deerfield&#39; ... &quot;St. Paul&#39;s&quot; &#39;Mt. Hermon&#39;</span>
+<span class="go">Data variables:</span>
+<span class="go">    mu       float64 2.354e+03</span>
+<span class="go">    theta_t  (school) float64 2.215e+03 3.159e+03 ... 2.678e+03 2.522e+03</span>
+<span class="go">    tau      float64 1.268e+03</span>
+<span class="go">    theta    (school) float64 2.298e+03 2.434e+03 ... 2.174e+03 2.278e+03</span>
+</pre></div>
+</div>
+<p>Calculate the ress of some of the variables</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">az</span><span class="o">.</span><span class="n">ess</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">var_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mu&quot;</span><span class="p">,</span> <span class="s2">&quot;theta_t&quot;</span><span class="p">])</span>
+<span class="gh">Out[2]: </span><span class="go"></span>
+<span class="go">&lt;xarray.Dataset&gt;</span>
+<span class="go">Dimensions:  (school: 8)</span>
+<span class="go">Coordinates:</span>
+<span class="go">  * school   (school) object &#39;Choate&#39; &#39;Deerfield&#39; ... &quot;St. Paul&#39;s&quot; &#39;Mt. Hermon&#39;</span>
+<span class="go">Data variables:</span>
+<span class="go">    mu       float64 1.177</span>
+<span class="go">    theta_t  (school) float64 1.107 1.579 1.463 1.258 1.156 1.277 1.339 1.261</span>
+</pre></div>
+</div>
+<p>Calculate the ess using the “tail” method, leaving the <cite>prob</cite> argument at its default
+value.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">az</span><span class="o">.</span><span class="n">ess</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;tail&quot;</span><span class="p">)</span>
+<span class="gh">Out[3]: </span><span class="go"></span>
+<span class="go">&lt;xarray.Dataset&gt;</span>
+<span class="go">Dimensions:  (school: 8)</span>
+<span class="go">Coordinates:</span>
+<span class="go">  * school   (school) object &#39;Choate&#39; &#39;Deerfield&#39; ... &quot;St. Paul&#39;s&quot; &#39;Mt. Hermon&#39;</span>
+<span class="go">Data variables:</span>
+<span class="go">    mu       float64 1.401e+03</span>
+<span class="go">    theta_t  (school) float64 1.45e+03 1.514e+03 ... 1.207e+03 1.589e+03</span>
+<span class="go">    tau      float64 900.0</span>
+<span class="go">    theta    (school) float64 1.445e+03 1.506e+03 ... 1.433e+03 1.418e+03</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="arviz.bfmi.html" title="previous page">arviz.bfmi</a>
+    <a class='right-next' id="next-link" href="arviz.rhat.html" title="next page">arviz.rhat</a>
+
+              </div>
+              
+          </main>
+          
+  
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, ArviZ devs.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

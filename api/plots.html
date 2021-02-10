@@ -1,0 +1,469 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plots &#8212; ArviZ dev documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="arviz.plot_autocorr" href="generated/arviz.plot_autocorr.html" />
+    <link rel="prev" title="API Reference" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/logo.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../examples/index.html">Example Gallery</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../user_guide/index.html">User Guide</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">API Reference</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../usage.html">Usage</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../contributing/index.html">Contributing</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../about.html">About</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/arviz-devs/arviz" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/arviz_devs" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+  
+    
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+  
+                <li class="active">
+                    <a href="">Plots</a>
+                    <ul>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_autocorr.html">arviz.plot_autocorr</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_bpv.html">arviz.plot_bpv</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_compare.html">arviz.plot_compare</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_density.html">arviz.plot_density</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_dist.html">arviz.plot_dist</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_dist_comparison.html">arviz.plot_dist_comparison</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_elpd.html">arviz.plot_elpd</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_energy.html">arviz.plot_energy</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_ess.html">arviz.plot_ess</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_forest.html">arviz.plot_forest</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_hdi.html">arviz.plot_hdi</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_joint.html">arviz.plot_joint</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_kde.html">arviz.plot_kde</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_khat.html">arviz.plot_khat</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_loo_pit.html">arviz.plot_loo_pit</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_mcse.html">arviz.plot_mcse</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_pair.html">arviz.plot_pair</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_parallel.html">arviz.plot_parallel</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_posterior.html">arviz.plot_posterior</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_ppc.html">arviz.plot_ppc</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_rank.html">arviz.plot_rank</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_separation.html">arviz.plot_separation</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_trace.html">arviz.plot_trace</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="generated/arviz.plot_violin.html">arviz.plot_violin</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="stats.html">Stats</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="diagnostics.html">Diagnostics</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="stats_utils.html">Stats utils</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="data.html">Data</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="inference_data.html">InferenceData</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="utils.html">Utils</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="rcparams.html">rcParams</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="wrappers.html">Wrappers</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="stats_refitting.html">Stats (requiring refitting)</a>
+                </li>
+            
+          
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+  
+
+
+          
+  
+    
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+  
+
+
+          
+  
+    
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="plots">
+<span id="plot-api"></span><h1>Plots<a class="headerlink" href="#plots" title="Permalink to this headline">¶</a></h1>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.plot_autocorr.html#arviz.plot_autocorr" title="arviz.plot_autocorr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_autocorr</span></code></a>(data[, var_names, …])</p></td>
+<td><p>Bar plot of the autocorrelation function for a sequence of data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.plot_bpv.html#arviz.plot_bpv" title="arviz.plot_bpv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_bpv</span></code></a>(data[, kind, t_stat, bpv, …])</p></td>
+<td><p>Plot Bayesian p-value for observed data and Posterior/Prior predictive.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.plot_compare.html#arviz.plot_compare" title="arviz.plot_compare"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_compare</span></code></a>(comp_df[, insample_dev, …])</p></td>
+<td><p>Summary plot for model comparison.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.plot_density.html#arviz.plot_density" title="arviz.plot_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_density</span></code></a>(data[, group, data_labels, …])</p></td>
+<td><p>Generate KDE plots for continuous variables and histograms for discrete ones.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.plot_dist.html#arviz.plot_dist" title="arviz.plot_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_dist</span></code></a>(values[, values2, color, kind, …])</p></td>
+<td><p>Plot distribution as histogram or kernel density estimates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.plot_dist_comparison.html#arviz.plot_dist_comparison" title="arviz.plot_dist_comparison"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_dist_comparison</span></code></a>(data[, kind, figsize, …])</p></td>
+<td><p>Plot to compare fitted and unfitted distributions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.plot_elpd.html#arviz.plot_elpd" title="arviz.plot_elpd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_elpd</span></code></a>(compare_dict[, color, xlabels, …])</p></td>
+<td><p>Plot pointwise elpd differences between two or more models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.plot_energy.html#arviz.plot_energy" title="arviz.plot_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_energy</span></code></a>(data[, kind, bfmi, figsize, …])</p></td>
+<td><p>Plot energy transition distribution and marginal energy distribution in HMC algorithms.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.plot_ess.html#arviz.plot_ess" title="arviz.plot_ess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_ess</span></code></a>(idata[, var_names, filter_vars, …])</p></td>
+<td><p>Plot quantile, local or evolution of effective sample sizes (ESS).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.plot_forest.html#arviz.plot_forest" title="arviz.plot_forest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_forest</span></code></a>(data[, kind, model_names, …])</p></td>
+<td><p>Forest plot to compare HDI intervals from a number of distributions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.plot_hdi.html#arviz.plot_hdi" title="arviz.plot_hdi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_hdi</span></code></a>(x[, y, hdi_prob, hdi_data, color, …])</p></td>
+<td><p>Plot HDI intervals for regression data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.plot_joint.html#arviz.plot_joint" title="arviz.plot_joint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_joint</span></code></a>(data[, group, var_names, …])</p></td>
+<td><p>Plot a scatter or hexbin of two variables with their respective marginals distributions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.plot_kde.html#arviz.plot_kde" title="arviz.plot_kde"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_kde</span></code></a>(values[, values2, cumulative, rug, …])</p></td>
+<td><p>1D or 2D KDE plot taking into account boundary conditions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.plot_khat.html#arviz.plot_khat" title="arviz.plot_khat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_khat</span></code></a>(khats[, color, xlabels, …])</p></td>
+<td><p>Plot Pareto tail indices for diagnosing convergence.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.plot_loo_pit.html#arviz.plot_loo_pit" title="arviz.plot_loo_pit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_loo_pit</span></code></a>([idata, y, y_hat, log_weights, …])</p></td>
+<td><p>Plot Leave-One-Out (LOO) probability integral transformation (PIT) predictive checks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.plot_mcse.html#arviz.plot_mcse" title="arviz.plot_mcse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_mcse</span></code></a>(idata[, var_names, filter_vars, …])</p></td>
+<td><p>Plot quantile or local Monte Carlo Standard Error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.plot_pair.html#arviz.plot_pair" title="arviz.plot_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_pair</span></code></a>(data[, group, var_names, …])</p></td>
+<td><p>Plot a scatter, kde and/or hexbin matrix with (optional) marginals on the diagonal.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.plot_parallel.html#arviz.plot_parallel" title="arviz.plot_parallel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_parallel</span></code></a>(data[, var_names, …])</p></td>
+<td><p>Plot parallel coordinates plot showing posterior points with and without divergences.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.plot_posterior.html#arviz.plot_posterior" title="arviz.plot_posterior"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_posterior</span></code></a>(data[, var_names, …])</p></td>
+<td><p>Plot Posterior densities in the style of John K.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.plot_ppc.html#arviz.plot_ppc" title="arviz.plot_ppc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_ppc</span></code></a>(data[, kind, alpha, mean, …])</p></td>
+<td><p>Plot for posterior/prior predictive checks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.plot_rank.html#arviz.plot_rank" title="arviz.plot_rank"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_rank</span></code></a>(data[, var_names, filter_vars, …])</p></td>
+<td><p>Plot rank order statistics of chains.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.plot_separation.html#arviz.plot_separation" title="arviz.plot_separation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_separation</span></code></a>([idata, y, y_hat, …])</p></td>
+<td><p>Separation plot for binary outcome models.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/arviz.plot_trace.html#arviz.plot_trace" title="arviz.plot_trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_trace</span></code></a>(data[, var_names, filter_vars, …])</p></td>
+<td><p>Plot distribution (histogram or kernel density estimates) and sampled values or rank plot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/arviz.plot_violin.html#arviz.plot_violin" title="arviz.plot_violin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_violin</span></code></a>(data[, var_names, filter_vars, …])</p></td>
+<td><p>Plot posterior of traces as violin plot.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">API Reference</a>
+    <a class='right-next' id="next-link" href="generated/arviz.plot_autocorr.html" title="next page">arviz.plot_autocorr</a>
+
+              </div>
+              
+          </main>
+          
+  
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, ArviZ devs.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

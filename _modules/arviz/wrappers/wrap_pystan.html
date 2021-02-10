@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>arviz.wrappers.wrap_pystan &#8212; ArviZ dev documentation</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../../../index.html">
+    
+      <img src="../../../_static/logo.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../examples/index.html">Example Gallery</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../user_guide/index.html">User Guide</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../api/index.html">API Reference</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../usage.html">Usage</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../contributing/index.html">Contributing</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../about.html">About</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/arviz-devs/arviz" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/arviz_devs" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+  
+    
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+  
+
+
+          
+  
+    
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+  
+
+
+          
+  
+    
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1>Source code for arviz.wrappers.wrap_pystan</h1><div class="highlight"><pre>
+<span></span><span class="c1"># pylint: disable=arguments-differ</span>
+<span class="sd">&quot;&quot;&quot;Base class for PyStan wrappers.&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">..data</span> <span class="kn">import</span> <span class="n">from_pystan</span>
+<span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="n">SamplingWrapper</span>
+
+
+<div class="viewcode-block" id="PyStanSamplingWrapper"><a class="viewcode-back" href="../../../api/generated/arviz.PyStanSamplingWrapper.html#arviz.PyStanSamplingWrapper">[docs]</a><span class="k">class</span> <span class="nc">PyStanSamplingWrapper</span><span class="p">(</span><span class="n">SamplingWrapper</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;PyStan sampling wrapper base class.</span>
+
+<span class="sd">    See the documentation on  :class:`~arviz.SamplingWrapper` for a more detailed</span>
+<span class="sd">    description. An example of ``PyStanSamplingWrapper`` usage can be found</span>
+<span class="sd">    in the :ref:`pystan_refitting` notebook.</span>
+
+<span class="sd">    Warnings</span>
+<span class="sd">    --------</span>
+<span class="sd">    Sampling wrappers are an experimental feature in a very early stage. Please use them</span>
+<span class="sd">    with caution.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PyStanSamplingWrapper.sel_observations"><a class="viewcode-back" href="../../../api/generated/arviz.PyStanSamplingWrapper.sel_observations.html#arviz.PyStanSamplingWrapper.sel_observations">[docs]</a>    <span class="k">def</span> <span class="nf">sel_observations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Select a subset of the observations in idata_orig.</span>
+
+<span class="sd">        **Not implemented**: This method must be implemented on a model basis.</span>
+<span class="sd">        It is documented here to show its format and call signature.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        idx</span>
+<span class="sd">            Indexes to separate from the rest of the observed data.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        modified_observed_data : dict</span>
+<span class="sd">            Dictionary containing both excluded and included data but properly divided</span>
+<span class="sd">            in the different keys. Passed to ``data`` argument of ``model.sampling``.</span>
+<span class="sd">        excluded_observed_data : str</span>
+<span class="sd">            Variable name containing the pointwise log likelihood data of the excluded</span>
+<span class="sd">            data. As PyStan cannot call C++ functions and log_likelihood__i is already</span>
+<span class="sd">            calculated *during* the simultion, instead of the value on which to evaluate</span>
+<span class="sd">            the likelihood, ``log_likelihood__i`` expects a string so it can extract the</span>
+<span class="sd">            corresponding data from the InferenceData object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;sel_observations must be implemented on a model basis&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PyStanSamplingWrapper.sample"><a class="viewcode-back" href="../../../api/generated/arviz.PyStanSamplingWrapper.sample.html#arviz.PyStanSamplingWrapper.sample">[docs]</a>    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modified_observed_data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Resample the PyStan model stored in self.model on modified_observed_data.&quot;&quot;&quot;</span>
+        <span class="n">fit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">sampling</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">modified_observed_data</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fit</span></div>
+
+<div class="viewcode-block" id="PyStanSamplingWrapper.get_inference_data"><a class="viewcode-back" href="../../../api/generated/arviz.PyStanSamplingWrapper.get_inference_data.html#arviz.PyStanSamplingWrapper.get_inference_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_inference_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fit</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert the fit object returned by ``self.sample`` to InferenceData.&quot;&quot;&quot;</span>
+        <span class="n">idata</span> <span class="o">=</span> <span class="n">from_pystan</span><span class="p">(</span><span class="n">posterior</span><span class="o">=</span><span class="n">fit</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">idata_kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">idata</span></div>
+
+<div class="viewcode-block" id="PyStanSamplingWrapper.log_likelihood__i"><a class="viewcode-back" href="../../../api/generated/arviz.PyStanSamplingWrapper.log_likelihood__i.html#arviz.PyStanSamplingWrapper.log_likelihood__i">[docs]</a>    <span class="k">def</span> <span class="nf">log_likelihood__i</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">excluded_obs_log_like</span><span class="p">,</span> <span class="n">idata__i</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Retrieve the log likelihood of the excluded observations from ``idata__i``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">idata__i</span><span class="o">.</span><span class="n">log_likelihood</span><span class="p">[</span><span class="n">excluded_obs_log_like</span><span class="p">]</span></div></div>
+</pre></div>
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+
+              </div>
+              
+          </main>
+          
+  
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, ArviZ devs.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

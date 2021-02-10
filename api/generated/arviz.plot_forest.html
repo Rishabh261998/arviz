@@ -1,0 +1,541 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>arviz.plot_forest &#8212; ArviZ dev documentation</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="arviz.plot_hdi" href="arviz.plot_hdi.html" />
+    <link rel="prev" title="arviz.plot_ess" href="arviz.plot_ess.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../../index.html">
+    
+      <img src="../../_static/logo.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../examples/index.html">Example Gallery</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../user_guide/index.html">User Guide</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">API Reference</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../usage.html">Usage</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../contributing/index.html">Contributing</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../about.html">About</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/arviz-devs/arviz" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/arviz_devs" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+  
+    
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+  
+                <li class="active">
+                    <a href="../plots.html">Plots</a>
+                    <ul>
+                    
+                        <li class="">
+                            <a href="arviz.plot_autocorr.html">arviz.plot_autocorr</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_bpv.html">arviz.plot_bpv</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_compare.html">arviz.plot_compare</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_density.html">arviz.plot_density</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_dist.html">arviz.plot_dist</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_dist_comparison.html">arviz.plot_dist_comparison</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_elpd.html">arviz.plot_elpd</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_energy.html">arviz.plot_energy</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_ess.html">arviz.plot_ess</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="">arviz.plot_forest</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_hdi.html">arviz.plot_hdi</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_joint.html">arviz.plot_joint</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_kde.html">arviz.plot_kde</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_khat.html">arviz.plot_khat</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_loo_pit.html">arviz.plot_loo_pit</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_mcse.html">arviz.plot_mcse</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_pair.html">arviz.plot_pair</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_parallel.html">arviz.plot_parallel</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_posterior.html">arviz.plot_posterior</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_ppc.html">arviz.plot_ppc</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_rank.html">arviz.plot_rank</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_separation.html">arviz.plot_separation</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_trace.html">arviz.plot_trace</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_violin.html">arviz.plot_violin</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../stats.html">Stats</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../diagnostics.html">Diagnostics</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../stats_utils.html">Stats utils</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../data.html">Data</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../inference_data.html">InferenceData</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../utils.html">Utils</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../rcparams.html">rcParams</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../wrappers.html">Wrappers</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../stats_refitting.html">Stats (requiring refitting)</a>
+                </li>
+            
+          
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+  
+
+
+          
+  
+    
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+  
+
+
+          
+  
+    
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="arviz-plot-forest">
+<h1>arviz.plot_forest<a class="headerlink" href="#arviz-plot-forest" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="arviz.plot_forest">
+<code class="sig-prename descclassname">arviz.</code><code class="sig-name descname">plot_forest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">kind</span><span class="o">=</span><span class="default_value">'forestplot'</span></em>, <em class="sig-param"><span class="n">model_names</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">var_names</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">filter_vars</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">transform</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">coords</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">combined</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">hdi_prob</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">rope</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">quartiles</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">ess</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">r_hat</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">colors</span><span class="o">=</span><span class="default_value">'cycle'</span></em>, <em class="sig-param"><span class="n">textsize</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">linewidth</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">markersize</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ridgeplot_alpha</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ridgeplot_overlap</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">ridgeplot_kind</span><span class="o">=</span><span class="default_value">'auto'</span></em>, <em class="sig-param"><span class="n">ridgeplot_truncate</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">ridgeplot_quantiles</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">figsize</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">backend</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">backend_config</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">backend_kwargs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">credible_interval</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/arviz/plots/forestplot.html#plot_forest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arviz.plot_forest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forest plot to compare HDI intervals from a number of distributions.</p>
+<p>Generates a forest plot of 100*(hdi_prob)% HDI intervals from a trace or list of traces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data: obj or list[obj]</strong></dt><dd><p>Any object that can be converted to an az.InferenceData object
+Refer to documentation of az.convert_to_dataset for details</p>
+</dd>
+<dt><strong>kind: str</strong></dt><dd><p>Choose kind of plot for main axis. Supports “forestplot” or “ridgeplot”</p>
+</dd>
+<dt><strong>model_names: list[str], optional</strong></dt><dd><p>List with names for the models in the list of data. Useful when plotting more that one
+dataset</p>
+</dd>
+<dt><strong>var_names: list[str], optional</strong></dt><dd><p>List of variables to plot (defaults to None, which results in all variables plotted)
+Prefix the variables by <cite>~</cite> when you want to exclude them from the plot.</p>
+</dd>
+<dt><strong>filter_vars: {None, “like”, “regex”}, optional, default=None</strong></dt><dd><p>If <cite>None</cite> (default), interpret var_names as the real variables names. If “like”, interpret
+var_names as substrings of the real variables names. If “regex”, interpret var_names as
+regular expressions on the real variables names. A la <cite>pandas.filter</cite>.</p>
+</dd>
+<dt><strong>transform: callable</strong></dt><dd><p>Function to transform data (defaults to None i.e.the identity function)</p>
+</dd>
+<dt><strong>coords: dict, optional</strong></dt><dd><p>Coordinates of var_names to be plotted. Passed to <cite>Dataset.sel</cite></p>
+</dd>
+<dt><strong>combined: bool</strong></dt><dd><p>Flag for combining multiple chains into a single chain. If False (default), chains will be
+plotted separately.</p>
+</dd>
+<dt><strong>hdi_prob: float, optional</strong></dt><dd><p>Plots highest posterior density interval for chosen percentage of density. Defaults to 0.94.</p>
+</dd>
+<dt><strong>rope: tuple or dictionary of tuples</strong></dt><dd><p>Lower and upper values of the Region Of Practical Equivalence. If a list with one interval
+only is provided, the ROPE will be displayed across the y-axis. If more than one interval is
+provided the length of the list should match the number of variables.</p>
+</dd>
+<dt><strong>quartiles: bool, optional</strong></dt><dd><p>Flag for plotting the interquartile range, in addition to the hdi_prob intervals.
+Defaults to True</p>
+</dd>
+<dt><strong>r_hat: bool, optional</strong></dt><dd><p>Flag for plotting Split R-hat statistics. Requires 2 or more chains. Defaults to False</p>
+</dd>
+<dt><strong>ess: bool, optional</strong></dt><dd><p>Flag for plotting the effective sample size. Defaults to False</p>
+</dd>
+<dt><strong>colors: list or string, optional</strong></dt><dd><p>list with valid matplotlib colors, one color per model. Alternative a string can be passed.
+If the string is <cite>cycle</cite>, it will automatically chose a color per model from the matplotlibs
+cycle. If a single color is passed, eg ‘k’, ‘C2’, ‘red’ this color will be used for all
+models. Defauls to ‘cycle’.</p>
+</dd>
+<dt><strong>textsize: float</strong></dt><dd><p>Text size scaling factor for labels, titles and lines. If None it will be autoscaled based
+on figsize.</p>
+</dd>
+<dt><strong>linewidth: int</strong></dt><dd><p>Line width throughout. If None it will be autoscaled based on figsize.</p>
+</dd>
+<dt><strong>markersize: int</strong></dt><dd><p>Markersize throughout. If None it will be autoscaled based on figsize.</p>
+</dd>
+<dt><strong>ridgeplot_alpha: float</strong></dt><dd><p>Transparency for ridgeplot fill.  If 0, border is colored by model, otherwise
+a black outline is used.</p>
+</dd>
+<dt><strong>ridgeplot_overlap: float</strong></dt><dd><p>Overlap height for ridgeplots.</p>
+</dd>
+<dt><strong>ridgeplot_kind: string</strong></dt><dd><p>By default (“auto”) continuous variables are plotted using KDEs and discrete ones using
+histograms. To override this use “hist” to plot histograms and “density” for KDEs</p>
+</dd>
+<dt><strong>ridgeplot_truncate: bool</strong></dt><dd><p>Whether to truncate densities according to the value of hdi_prop. Defaults to True</p>
+</dd>
+<dt><strong>ridgeplot_quantiles: list</strong></dt><dd><p>Quantiles in ascending order used to segment the KDE. Use [.25, .5, .75] for quartiles.
+Defaults to None.</p>
+</dd>
+<dt><strong>figsize: tuple</strong></dt><dd><p>Figure size. If None it will be defined automatically.</p>
+</dd>
+<dt><strong>ax: axes, optional</strong></dt><dd><p>Matplotlib axes or bokeh figures.</p>
+</dd>
+<dt><strong>backend: str, optional</strong></dt><dd><p>Select plotting backend {“matplotlib”,”bokeh”}. Default “matplotlib”.</p>
+</dd>
+<dt><strong>backend_config: dict, optional</strong></dt><dd><p>Currently specifies the bounds to use for bokeh axes. Defaults to value set in rcParams.</p>
+</dd>
+<dt><strong>backend_kwargs: bool, optional</strong></dt><dd><p>These are kwargs specific to the backend being used. For additional documentation
+check the plotting method of the backend.</p>
+</dd>
+<dt><strong>show: bool, optional</strong></dt><dd><p>Call backend show function.</p>
+</dd>
+<dt><strong>credible_interval: float, optional</strong></dt><dd><p>deprecated: Please see hdi_prob</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>gridspec: matplotlib GridSpec or bokeh figures</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Forestpĺot</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">arviz</span> <span class="k">as</span> <span class="nn">az</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">non_centered_data</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">load_arviz_data</span><span class="p">(</span><span class="s1">&#39;non_centered_eight&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">axes</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">plot_forest</span><span class="p">(</span><span class="n">non_centered_data</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;forestplot&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">var_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;^the&quot;</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">filter_vars</span><span class="o">=</span><span class="s2">&quot;regex&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">combined</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Estimated theta for 8 schools model&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../../_images/arviz-plot_forest-1.png" src="../../_images/arviz-plot_forest-1.png" />
+</div>
+<p>Forestpĺot with ropes</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rope</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;theta&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;school&#39;</span><span class="p">:</span> <span class="s1">&#39;Choate&#39;</span><span class="p">,</span> <span class="s1">&#39;rope&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)}],</span> <span class="s1">&#39;mu&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;rope&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)}]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">axes</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">plot_forest</span><span class="p">(</span><span class="n">non_centered_data</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">rope</span><span class="o">=</span><span class="n">rope</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">var_names</span><span class="o">=</span><span class="s1">&#39;~tau&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">combined</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Estimated theta for 8 schools model&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../../_images/arviz-plot_forest-2.png" src="../../_images/arviz-plot_forest-2.png" />
+</div>
+<p>Ridgeplot</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">axes</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">plot_forest</span><span class="p">(</span><span class="n">non_centered_data</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;ridgeplot&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">var_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">combined</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">ridgeplot_overlap</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Estimated theta for 8 schools model&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../../_images/arviz-plot_forest-3.png" src="../../_images/arviz-plot_forest-3.png" />
+</div>
+<p>Ridgeplot non-truncated and with quantiles</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">axes</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">plot_forest</span><span class="p">(</span><span class="n">non_centered_data</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;ridgeplot&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">var_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">combined</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">ridgeplot_truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">ridgeplot_quantiles</span><span class="o">=</span><span class="p">[</span><span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">75</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">ridgeplot_overlap</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                           <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Estimated theta for 8 schools model&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../../_images/arviz-plot_forest-4.png" src="../../_images/arviz-plot_forest-4.png" />
+</div>
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="arviz.plot_ess.html" title="previous page">arviz.plot_ess</a>
+    <a class='right-next' id="next-link" href="arviz.plot_hdi.html" title="next page">arviz.plot_hdi</a>
+
+              </div>
+              
+          </main>
+          
+  
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, ArviZ devs.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

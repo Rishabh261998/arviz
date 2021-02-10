@@ -1,0 +1,476 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>arviz.plot_autocorr &#8212; ArviZ dev documentation</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="arviz.plot_bpv" href="arviz.plot_bpv.html" />
+    <link rel="prev" title="Plots" href="../plots.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../../index.html">
+    
+      <img src="../../_static/logo.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../examples/index.html">Example Gallery</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../user_guide/index.html">User Guide</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">API Reference</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../usage.html">Usage</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../contributing/index.html">Contributing</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../about.html">About</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/arviz-devs/arviz" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/arviz_devs" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+  
+    
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+  
+                <li class="active">
+                    <a href="../plots.html">Plots</a>
+                    <ul>
+                    
+                        <li class="active">
+                            <a href="">arviz.plot_autocorr</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_bpv.html">arviz.plot_bpv</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_compare.html">arviz.plot_compare</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_density.html">arviz.plot_density</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_dist.html">arviz.plot_dist</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_dist_comparison.html">arviz.plot_dist_comparison</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_elpd.html">arviz.plot_elpd</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_energy.html">arviz.plot_energy</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_ess.html">arviz.plot_ess</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_forest.html">arviz.plot_forest</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_hdi.html">arviz.plot_hdi</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_joint.html">arviz.plot_joint</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_kde.html">arviz.plot_kde</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_khat.html">arviz.plot_khat</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_loo_pit.html">arviz.plot_loo_pit</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_mcse.html">arviz.plot_mcse</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_pair.html">arviz.plot_pair</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_parallel.html">arviz.plot_parallel</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_posterior.html">arviz.plot_posterior</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_ppc.html">arviz.plot_ppc</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_rank.html">arviz.plot_rank</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_separation.html">arviz.plot_separation</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_trace.html">arviz.plot_trace</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="arviz.plot_violin.html">arviz.plot_violin</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../stats.html">Stats</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../diagnostics.html">Diagnostics</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../stats_utils.html">Stats utils</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../data.html">Data</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../inference_data.html">InferenceData</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../utils.html">Utils</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../rcparams.html">rcParams</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../wrappers.html">Wrappers</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../stats_refitting.html">Stats (requiring refitting)</a>
+                </li>
+            
+          
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+  
+
+
+          
+  
+    
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+  
+
+
+          
+  
+    
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="arviz-plot-autocorr">
+<h1>arviz.plot_autocorr<a class="headerlink" href="#arviz-plot-autocorr" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="arviz.plot_autocorr">
+<code class="sig-prename descclassname">arviz.</code><code class="sig-name descname">plot_autocorr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">var_names</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">filter_vars</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">max_lag</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">combined</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">grid</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">figsize</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">textsize</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">backend</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">backend_config</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">backend_kwargs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/arviz/plots/autocorrplot.html#plot_autocorr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arviz.plot_autocorr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bar plot of the autocorrelation function for a sequence of data.</p>
+<p>Useful in particular for posteriors from MCMC samples which may display correlation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data: obj</strong></dt><dd><p>Any object that can be converted to an az.InferenceData object
+Refer to documentation of az.convert_to_dataset for details</p>
+</dd>
+<dt><strong>var_names: list of variable names, optional</strong></dt><dd><p>Variables to be plotted, if None all variable are plotted. Prefix the
+variables by <cite>~</cite> when you want to exclude them from the plot. Vector-value
+stochastics are handled automatically.</p>
+</dd>
+<dt><strong>filter_vars: {None, “like”, “regex”}, optional, default=None</strong></dt><dd><p>If <cite>None</cite> (default), interpret var_names as the real variables names. If “like”,
+interpret var_names as substrings of the real variables names. If “regex”,
+interpret var_names as regular expressions on the real variables names. A la
+<cite>pandas.filter</cite>.</p>
+</dd>
+<dt><strong>max_lag: int, optional</strong></dt><dd><p>Maximum lag to calculate autocorrelation. Defaults to 100 or num draws, whichever is smaller</p>
+</dd>
+<dt><strong>combined: bool</strong></dt><dd><p>Flag for combining multiple chains into a single chain. If False (default), chains will be
+plotted separately.</p>
+</dd>
+<dt><strong>grid</strong><span class="classifier">tuple</span></dt><dd><p>Number of rows and columns. Defaults to None, the rows and columns are
+automatically inferred.</p>
+</dd>
+<dt><strong>figsize: tuple</strong></dt><dd><p>Figure size. If None it will be defined automatically.
+Note this is not used if ax is supplied.</p>
+</dd>
+<dt><strong>textsize: float</strong></dt><dd><p>Text size scaling factor for labels, titles and lines. If None it will be autoscaled based
+on figsize.</p>
+</dd>
+<dt><strong>ax: numpy array-like of matplotlib axes or bokeh figures, optional</strong></dt><dd><p>A 2D array of locations into which to plot the densities. If not supplied, Arviz will create
+its own array of plot areas (and return it).</p>
+</dd>
+<dt><strong>backend: str, optional</strong></dt><dd><p>Select plotting backend {“matplotlib”,”bokeh”}. Default “matplotlib”.</p>
+</dd>
+<dt><strong>backend_config: dict, optional</strong></dt><dd><p>Currently specifies the bounds to use for bokeh axes. Defaults to value set in rcParams.</p>
+</dd>
+<dt><strong>backend_kwargs: dict, optional</strong></dt><dd><p>These are kwargs specific to the backend being used. For additional documentation
+check the plotting method of the backend.</p>
+</dd>
+<dt><strong>show: bool, optional</strong></dt><dd><p>Call backend show function.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>axes: matplotlib axes or bokeh figures</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Plot default autocorrelation</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">arviz</span> <span class="k">as</span> <span class="nn">az</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">load_arviz_data</span><span class="p">(</span><span class="s1">&#39;centered_eight&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">az</span><span class="o">.</span><span class="n">plot_autocorr</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../../_images/arviz-plot_autocorr-1.png" src="../../_images/arviz-plot_autocorr-1.png" />
+</div>
+<p>Plot subset variables by specifying variable name exactly</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">az</span><span class="o">.</span><span class="n">plot_autocorr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">var_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">,</span> <span class="s1">&#39;tau&#39;</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../../_images/arviz-plot_autocorr-2.png" src="../../_images/arviz-plot_autocorr-2.png" />
+</div>
+<p>Combine chains by variable and select variables by excluding some with partial naming</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">az</span><span class="o">.</span><span class="n">plot_autocorr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">var_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;~thet&#39;</span><span class="p">],</span> <span class="n">filter_vars</span><span class="o">=</span><span class="s2">&quot;like&quot;</span><span class="p">,</span> <span class="n">combined</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../../_images/arviz-plot_autocorr-3.png" src="../../_images/arviz-plot_autocorr-3.png" />
+</div>
+<p>Specify maximum lag (x axis bound)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">az</span><span class="o">.</span><span class="n">plot_autocorr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">var_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">,</span> <span class="s1">&#39;tau&#39;</span><span class="p">],</span> <span class="n">max_lag</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">combined</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../../_images/arviz-plot_autocorr-4.png" src="../../_images/arviz-plot_autocorr-4.png" />
+</div>
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="../plots.html" title="previous page">Plots</a>
+    <a class='right-next' id="next-link" href="arviz.plot_bpv.html" title="next page">arviz.plot_bpv</a>
+
+              </div>
+              
+          </main>
+          
+  
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, ArviZ devs.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
